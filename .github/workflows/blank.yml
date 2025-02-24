@@ -1,0 +1,14 @@
+name: Simple CI/CD
+
+on: [push, pull_request]
+
+jobs:
+  list-folders:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: List Folders
+        run: Get-ChildItem -Path . -Directory | Select-Object -ExpandProperty Name
+        shell: pwsh
